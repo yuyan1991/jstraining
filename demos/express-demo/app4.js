@@ -12,6 +12,11 @@ router.use(function(req, res, next) {
   next();
 });
 
+router.use(function(req, res, next) {
+  console.log('Arrival Time: ' + new Date());
+  next();
+});
+
 router.get('/', function(req, res) {
   res.send('<h1>Hello World</h1>');
 });
