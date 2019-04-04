@@ -18,21 +18,34 @@ describe('test index.html', function() {
     child.kill();
   });
 
-  it('点击后标题改变', function (done) {
+  // it('点击后标题改变', function (done) {
+  //   var nightmare = Nightmare({ show: true });
+  //   nightmare
+  //     .goto('http://127.0.0.1:8080/index.html')
+  //     .click('h1')
+  //     .wait(1000)
+  //     .evaluate(function () {
+  //       return document.querySelector('h1').textContent;
+  //     })
+  //     .end()
+  //     .then(function(text) {
+  //       expect(text).to.equal('Hello Clicked');
+  //       done();
+  //     })
+  // });
+
+  it('verify if color is red', (done) => {
     var nightmare = Nightmare({ show: true });
     nightmare
       .goto('http://127.0.0.1:8080/index.html')
-      .click('h1')
-      .wait(1000)
       .evaluate(function () {
-        return document.querySelector('h1').textContent;
+        return window.getComputedStyle(document.querySelector('h1'), null).getPropertyValue('color');
       })
       .end()
-      .then(function(text) {
-        expect(text).to.equal('Hello Clicked');
+      .then(function (element) {
+        expect(element).to.equal('rgb(255, 0, 0)');
         done();
       })
   });
-
 });
 

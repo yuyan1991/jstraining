@@ -7,7 +7,7 @@ nightmare
   .click('form[action*="/search"] [type=submit]')
   .wait(3000)
   .exists('#spulist-grid')
-//  .wait('#spulist-grid')
+  .wait('#spulist-grid')
   .evaluate(function () {
     return document.querySelector('#spulist-grid .grid-item .info-cont')
       .textContent.trim();
